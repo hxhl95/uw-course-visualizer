@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Courses</title>
+  <style type="text/css">
+    body {font-size: 85%;}
+    body, div {margin: 0; padding: 0; overflow: hidden;}
+    #canvas {float: left; border-right: 1px solid #999;}
+    #ctrl {float: right; width: 250px; padding: 10px 0}
+    #ctrl, input {font-family: Consolas, Courier, sans-serif;}
+    #ctrl a {cursor: pointer;}
+    textarea {vertical-align: top; resize: none;}
+  </style>
+  <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="raphael-min.js"></script>
+  <script type="text/javascript" src="dracula_graph.js"></script>
+  <script type="text/javascript" src="dracula_graffle.js"></script>
+</head>
+
+<body>
+<div id="canvas"></div>
+<div id="ctrl">
+  <label>Graph: </label>
+    <input type="button" id="gload" value="Load">
+    <input type="button" id="gsave" value="Save">
+    <input type="button" id="gclr" value="Clear">
+  <hr>
+  
+  <h3>Course Info</h3>
+    <label for="cid" title="Course code, e.g. MATH115; use the Fetch Info button to automatically fetch course information">ID:&nbsp;&nbsp;&nbsp;</label><input type="text" size="9" id="cid">
+    <input type="button" id="cfet" value="Fetch Info"><br>
+    <label for="cname" title="Title of the course (optional)">Name: </label><input type="text" size="25" id="cname"><br>
+    <label title="Term(s) during which the course is offered; double-click course to change term">Term: </label>
+    <input type="checkbox" name="cterm" id="ctF" value="F"><label for="ctf" title="Fall (orange node)">F</label>
+    <input type="checkbox" name="cterm" id="ctW" value="W"><label for="ctw" title="Winter (blue node)">W</label>
+    <input type="checkbox" name="cterm" id="ctS" value="S"><label for="cts" title="Summer (green node)">S</label><br>
+    <label for="creqs" title="Course prerequisites; [n, ...] means n of, and a missing number means all of; e.g. [MATH137, [1, CS115, CS135], [1, MATH135, MATH145]] means MATH137 and one of CS115/135 and one of MATH135/145">Reqs: </label>
+    <textarea id="creqs" rows="4" cols="20"></textarea><br>
+    <input type="button" id="cnew" value="Add/Update">
+    <input type="button" id="cdel" value="Delete">
+    <input type="button" id="cclr" value="Clear">
+  <hr>
+
+  <h3>Missing Prerequisites</h3>
+    <div id="errdisp"></div>
+
+</div>
+
+<script type="text/javascript" src="course_graph.js"></script>
+<script type="text/javascript" src="course_info.js"></script>
+</body>
+
+</html>
